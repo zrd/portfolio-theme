@@ -16,7 +16,7 @@ h1, h2 {
 .title
 {
   font-size: 2.5em;
-  text-align: center;
+  text-align: left;
   margin-bottom: 50px;
   text-transform: none;
   color: #1DAEDF;
@@ -57,12 +57,17 @@ article section .blog-post
 }
 
 /* Body */
-body {margin: 0}
+body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
 body > article, footer {
   line-height: 1.6em;
   display: block;
   max-width: 700px;
-  margin: 40px auto auto 355px;
+  /* margin: 40px auto auto 355px; */
+  margin: 40px auto auto;
   padding: 20px 80px 10px;
 }
 
@@ -114,9 +119,13 @@ a:hover { text-decoration: underline; }
 /* Sidebar */
 aside {
   font-size: 14px;
-  width: 220px; height: 100%;
-  position: fixed;
-  top: 0; left: 0;
+  width: 250px;
+  height: 100%;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  max-height: 100vh;
   padding: 30px;
   background-color: #2980b9;
   color: white;
@@ -124,6 +133,7 @@ aside {
   text-align: center;
   padding-top: 8%;
   background-size: cover;
+  overflow-y: auto;
 }
 
 aside > ul {
@@ -211,35 +221,28 @@ aside > h2 {
 
 /*--------Responsive------------*/
 
-@media (max-width: 800px) {
-
+/* ===== Portrait (vertical) orientation) ===== */
+@media (orientation: portrait) {
   aside {
-    left: 0;
-    max-width: none;
-    position: relative;
+    position: sticky;
     top: 0;
+    z-index: 1000;
     width: 100%;
-    padding: 0;
-    padding-top: 1px;
-  }
-
-  .nav
-  {
-    margin-left: 0;
-    margin-right: 0;
+    max-width: none;
+    padding: 0.5rem 0;
+    background-color: #2980b9;
+    text-align: center;
   }
 
   body > article {
     margin: 0 auto;
-    padding-top: 5px;
     padding: 1em;
+    max-width: 100%;
   }
 
-  footer
-  {
+  footer {
     padding: 1em;
-    margin-left: 1em;
-    margin-top: 0;
+    margin: 0;
   }
 
   #avatar {
@@ -248,6 +251,43 @@ aside > h2 {
     margin: 10px auto;
   }
 }
+
+/* ===== Landscape (horizontal) orientation) ===== */
+@media (orientation: landscape) {
+  body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto; /* independent scrolling */
+    width: 220px;
+    padding: 30px;
+    padding-top: 8%;
+    background-color: #2980b9;
+    box-shadow: 0 0 3px black;
+    color: white;
+    text-align: center;
+    background-size: cover;
+  }
+
+  body > article {
+    margin: 40px auto auto 355px;
+    max-width: 700px;
+    padding: 20px 80px 10px;
+  }
+
+  footer {
+    margin-left: 355px;
+    padding: 20px;
+  }
+}
+
 
 img {
   max-width: 100%;
