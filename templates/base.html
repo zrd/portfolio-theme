@@ -41,6 +41,7 @@
 <body>
 <!-- Sidebar -->
 <aside>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <!--<center><a href="{{ SITEURL }}"><img id="avatar" src="{{ AVATAR }}"></a></center>-->
     <h1>{{ SITENAME }}</h1>
     {% if SIDEBAR_DIGEST %}
@@ -157,6 +158,14 @@
         })();
     </script>
 {% endif %}
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector("aside nav");
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("show");
+  });
+});
+</script>
 </body>
 </html>
