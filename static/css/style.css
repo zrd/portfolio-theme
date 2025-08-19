@@ -241,14 +241,38 @@ aside > h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     background-color: #2980b9;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.75rem;
     z-index: 1000;
+  }
+
+  .site-branding {
+    text-align: center;
+    margin-bottom: 0.5rem;   /* spacing between title/digest and nav */
+  }
+
+  .site-branding h1,
+  .site-branding p {
+    margin: 0.25rem 0;
+  }
+
+  .site-branding h1 {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .site-branding p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: white;
+    opacity: 0.8;
   }
 
   /* Site title stays centered at the top */
   aside h1 {
-    margin: 0.25rem 0;
+    margin: 0;
     color: white;
   }
 
@@ -278,8 +302,8 @@ aside > h2 {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin: 0.5rem 0;
+    gap: .75rem;
+    margin: 0;
     padding: 0;
     list-style: none;
   }
@@ -287,7 +311,20 @@ aside > h2 {
   nav.nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 0.5rem;
+  }
+
+  .nav ul {
+    display: flex;
+    flex-direction: row;     /* make nav horizontal */
+    flex-wrap: wrap;         /* wrap if too many items */
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav li {
+    margin: 0 0.5rem;
+    list-style: none;
   }
 
   body > article {
@@ -297,7 +334,7 @@ aside > h2 {
   }
 
   footer {
-    margin: 0;
+    margin-top: auto;
     padding: 1rem;
   }
 }
