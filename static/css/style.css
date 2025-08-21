@@ -172,48 +172,11 @@ aside > h2 {
 
 .nav
 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  /*
+  display: block;
   margin-left: -30px;
   margin-right: -30px;
   border: 1px solid #328cc7;
   margin-top: 40px;
-  */
-  /* DEBUG */
-  outline: 2px solid red;
-  background: rgba(255,0,0,0.05);
-}
-
-/* Hamburger button */
-.nav-toggle {
-  display: none; /* hidden by default, shown on narrow widths in portrait orientation */
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  /* DEBUG */
-  background: rgba(0,0,255,0.1);
-}
-
-/* Collapsed state = hide nav (until user clicks burger) */
-.nav.collapsed {
-  display: none;
-  /* DEBUG */
-  outline: 2px solid orange;
-  background: rgba(255,165,0,0.1);
-}
-
-/* When burger is clicked, show nav vertically */
-.nav.show {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* DEBUG */
-  outline: 2px solid green;
-  background: rgba(0,255,0,0.1);
 }
 
 .nav > ul > li
@@ -255,6 +218,10 @@ aside > h2 {
   border-bottom: 3px solid #328cc7;
 } 
 
+/* Hamburger button */
+.nav-toggle {
+  display: none; /* hidden by default, shown on narrow widths in portrait orientation */
+}
 
 /*--------Responsive------------*/
 
@@ -309,7 +276,7 @@ aside > h2 {
     color: white;
   }
 
-  /* Burger button aligned to the right
+  /* Burger button aligned to the right */
   .nav-toggle {
     display: block;
     margin-left: auto;
@@ -319,7 +286,6 @@ aside > h2 {
     color: white;
     cursor: pointer;
   }
-  */
 
   /* Collapsible nav */
   nav.nav {
@@ -345,25 +311,6 @@ aside > h2 {
   nav.nav ul li a {
     color: white;
     text-decoration: none;
-  }
-
-  .nav.collapsed {
-    display: none; /* start hidden */
-  }
-
-  /* When burger is toggled open */
-  .nav.collapsed.show {
-    display: block; /* make nav visible */
-  }
-
-  .nav.collapsed.show ul {
-    display: flex;
-    flex-direction: column;   /* 👈 stack links vertically */
-    align-items: flex-start;  /* left-align */
-    gap: 0.5rem;              /* space between links */
-    list-style: none;         /* keep your theme clean */
-    padding: 0.5rem 1rem;
-    border: 1px solid #ddd;
   }
 
   .nav ul {
@@ -394,9 +341,14 @@ aside > h2 {
 
 
 /* Narrow portrait: hamburger + dropdown */
-@media (orientation: portrait) and (max-width: 1250px) {
+@media (orientation: portrait) and (max-width: 500px) {
   .nav-toggle {
-    display: inline-block;
+    display: block; /* show hamburger here */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 
   .nav {
@@ -406,7 +358,7 @@ aside > h2 {
   }
 
   .nav.show {
-    display: block; /* show when toggled */
+    display: flex; /* show when toggled */
   }
 
   .nav__link {
