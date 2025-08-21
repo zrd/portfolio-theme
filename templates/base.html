@@ -121,46 +121,6 @@
     </footer>
 {% endif %}
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-      const nav = document.querySelector(".nav");
-      const toggle = document.querySelector(".nav-toggle");
-
-      // ✅ Set to true to always show burger (ignore overflow detection)
-      const FORCE_BURGER = false;
-
-      function checkOverflow() {
-        nav.classList.remove("collapsed", "show");
-        toggle.style.display = "none";
-
-        if (FORCE_BURGER) {
-          // Debug: force burger mode
-          nav.classList.add("collapsed");
-          toggle.style.display = "block";
-          console.log("FORCE_BURGER active: hiding links, showing burger");
-          return;
-        }
-
-        // Normal behavior
-        if (nav.scrollWidth > nav.clientWidth) {
-          nav.classList.add("collapsed");
-          toggle.style.display = "block";
-          console.log("Nav collapsed: too wide, showing burger");
-        } else {
-          console.log("Nav fits: links visible, burger hidden");
-        }
-      }
-
-      toggle.addEventListener("click", () => {
-        nav.classList.toggle("show");
-        console.log("Burger clicked: nav.show =", nav.classList.contains("show"));
-      });
-
-      window.addEventListener("resize", checkOverflow);
-      checkOverflow();
-    });
-</script>
-
 {% if GOOGLE_ANALYTICS %}
     <!-- Analytics -->
     <script type="text/javascript">
@@ -177,5 +137,35 @@
         })();
     </script>
 {% endif %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navToggle = document.querySelector(".nav-toggle");
+      const nav = document.querySelector(".nav");
+
+      function checkOverflow() {
+        const lineHeight = parseFloat(getComputedStyle(nav).lineHeight);
+        const maxHeight = lineHeight * 2.5; // ~2 lines (with a little buffer)
+
+        if (nav.scrollHeight > maxHeight) {
+          // Too tall → collapse to burger
+          nav.classList.add("burger-mode");
+          navToggle.classList.add("burger-mode");
+        } else {
+          // Fits in 1 or 2 lines → show inline
+          nav.classList.remove("burger-mode", "show");
+          navToggle.classList.remove("burger-mode");
+        }
+      }
+
+      if (navToggle) {
+        navToggle.addEventListener("click", function () {
+          nav.classList.toggle("show");
+        });
+      }
+
+      window.addEventListener("resize", checkOverflow);
+      checkOverflow();
+    });
+</script>
 </body>
 </html>
