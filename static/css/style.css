@@ -200,6 +200,16 @@ aside > h2 {
     background-color: #328cc7;
 }
 
+.nav-bottom {
+  /* DEBUG */
+  border: 2px solid green;
+}
+
+.nav-bottom li {
+  margin: 0 0.5rem;
+  list-style: none;
+}
+
 .list-bare
 {
   list-style: none;
@@ -304,6 +314,16 @@ aside > h2 {
     list-style: none;
   }
 
+  .nav-bottom {
+    display: flex;
+  }
+
+  .social {
+    margin-top: 20px;
+    /* DEBUG */
+    border: 1px solid purple;
+  }
+
   body > article {
     margin: 1rem auto;
     padding: 1rem;
@@ -317,7 +337,7 @@ aside > h2 {
 }
 
 
-/* Narrow portrait: hamburger + dropdown */
+/* Narrow portrait */
 @media (orientation: portrait) and (max-width: 1250px) {
   nav.nav {
     display: flex;
@@ -332,6 +352,10 @@ aside > h2 {
     display: block;
     padding: 0.77273rem 0;
     border-bottom: 1px solid #328cc7;
+  }
+
+  .social {
+    margin-top: 10px;
   }
 }
 
