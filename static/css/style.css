@@ -428,36 +428,3 @@ aside > h2 {
     padding: 20px;
   }
 }
-
-/* Narrow landscape */
-@media (orientation: landscape) and (max-width: 500px) {
-  body {
-    flex-direction: column; /* stack sidebar on top */
-  }
-
-  aside {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 1rem;
-    text-align: left;
-  }
-
-  body > article {
-    margin: 1rem auto;
-    padding: 1rem;
-    max-width: 95%;   /* let it breathe */
-  }
-
-  footer {
-    margin: 1rem auto;
-    padding: 1rem;
-  }
-}
-
-/* DEBUG: narrow landscape test */
-@media (orientation: landscape) and (max-width: 1000px) {
-  body {
-    background: hotpink !important;
-  }
-}
